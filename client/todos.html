@@ -103,7 +103,7 @@
 
 <template name="tag_filter">
   <ul class="tags-nav nav nav-pills">
-    <li class="labels tag">Show:</li>
+    <span class="label label-info pull-left show-label">Show:</span>
     {{#each tags}}
       <li class="tag {{selected}}">
         {{tag_text}} <span class="count">({{count}})</span>
