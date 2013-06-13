@@ -1,23 +1,28 @@
 <head>
-  <title>Todos</title>
+  <title>Meteor app</title>
 </head>
-
 <body>
-  <div id="top-tag-filter">
-    {{> tag_filter}}
-  </div>
-
-  <div id="main-pane">
-    {{> todos}}
-  </div>
-
-  <div id="side-pane">
-    {{> lists}}
-  </div>
+  <div class="container-fluid">
+    <div class="row-fluid">
+      <div class="span2">
+        {{> lists}}
+      </div>
+      <div class="span10">
+        <div class="hero-unit">
+          {{> tag_filter}}
+        </div>
+        <div>
+          {{> todos}}
+        </div>
+      </div>
+    </div>
+  <div>
 </body>
 
 <template name="lists">
-  <h3>Todo Lists</h3>
+  <div class="hero-unit pending">
+    <h3>Pending deliveries</h3>
+  </div>
   {{#if loading}}
     <div id="lists">Loading...</div>
   {{else}}
@@ -97,12 +102,12 @@
 </template>
 
 <template name="tag_filter">
-  <div id="tag-filter" class="tag-list">
-    <div class="label">Show:</div>
+  <ul class="tags-nav nav nav-pills">
+    <li class="labels tag">Show:</li>
     {{#each tags}}
-      <div class="tag {{selected}}">
+      <li class="tag {{selected}}">
         {{tag_text}} <span class="count">({{count}})</span>
-      </div>
+      </li>
     {{/each}}
-  </div>
+  </ul>
 </template>
