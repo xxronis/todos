@@ -3,6 +3,7 @@
 // Define Minimongo collections to match server/publish.js.
 Lists = new Meteor.Collection("lists");
 Todos = new Meteor.Collection("todos");
+Stores = new Meteor.Collection("stores");
 
 // ID of currently selected list
 Session.setDefault('list_id', null);
