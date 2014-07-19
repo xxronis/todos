@@ -7,7 +7,6 @@ underscore
 backbone
 spiderable
 jquery
-preserve-inputs
 insecure
 bootstrap
 standard-app-packages

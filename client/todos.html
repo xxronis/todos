@@ -6,7 +6,11 @@
     <div class="row-fluid">
       <div class="span2">
         {{> lists}}
+        <div class="stores">
+          {{> stores}}
+        </div>        
       </div>
+      
       <div class="span10">
         <div class="hero-unit">
           {{> tag_filter}}
@@ -16,7 +20,7 @@
         </div>
       </div>
     </div>
-  <div>
+  </div>
 </body>
 
 <template name="lists">
@@ -49,6 +53,36 @@
   {{/if}}
 </template>
 
+<template name="stores">
+  <div class="hero-unit stores">
+    <h3>Stores</h3>
+  </div>  
+  {{#if loading}}
+    <div id="stores">Loading...</div>
+  {{else}}
+    <div id="stores">
+      {{#each stores}}
+        <div class="list {{selected}}">
+          {{#if editing}}
+            <div class="edit">
+              <input class="store-name-input" id="store-name-input" type="text" value="{{name}}" />
+            </div>
+          {{else}}
+            <div class="display">
+              <a class="store-name {{name_class}}" href="/{{_id}}">
+                {{name}}
+              </a>
+            </div>
+          {{/if}}
+        </div>
+      {{/each}}
+    </div>
+    <div id="createStore">
+      <input type="text" id="new-store" placeholder="New store" />
+    </div>
+  {{/if}}
+</template>
+
 <template name="todos">
   {{#if any_list_selected}}
     <div id="items-view">
@@ -77,7 +111,7 @@
     {{else}}
       <div class="destroy"></div>
       <div class="display">
-        <input class="check" name="markdone" type="checkbox" {{{done_checkbox}}} />
+        <input class="check" name="markdone" type="checkbox" {{done_checkbox}} />
         <div class="todo-text">{{text}}</div>
       </div>
     {{/if}}
