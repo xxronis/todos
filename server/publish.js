@@ -7,11 +7,11 @@ Lists = new Meteor.Collection("lists");
 //           faved: Number,
 //           tags: [String, ...],
 //           }
-Stores = new Meteor.Collection("stores");
-// Publish store for requested list_id.
-Meteor.publish('stores', function () {
-  return Stores.find();
-});
+// Stores = new Meteor.Collection("stores");
+// // Publish store for requested list_id.
+// Meteor.publish('stores', function () {
+//   return Stores.find();
+// });
 // Publish complete set of lists to all clients.
 Meteor.publish('lists', function () {
   return Lists.find();

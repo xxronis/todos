@@ -8,5 +8,7 @@ backbone
 spiderable
 jquery
 insecure
-bootstrap
 standard-app-packages
+less
+less-bootstrap-3
+font-awesome-4-less

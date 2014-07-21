@@ -1,94 +1,7 @@
-* {
-    padding: 0;
-    margin: 0;
-}
-
-ul {
-    list-style: none;
-}
-
-html, body {
-    height: 100%;
-}
-
 body {
-    font-size: 16px;
-    line-height: 1.5;
-    background: rgb(227, 228, 219);
-    color: #333333;
+    background: #F2F3EE;
+    /*color: #333333;*/
 }
-
-body, input {
-    /*font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;*/
-}
-
-input {
-    font-size: 100%;
-}
-
-a, a:visited, a:active {
-    color: #258;
-}
-
-h3 {
-    margin: 2px 0;
-}
-
-.hero-unit {
-    padding: 20px;
-    box-shadow: 0 0 9px rgba(0,0,0,.3) inset;
-}
-.pending {
-    background: green;
-    color: #eee;
-}
-#help {
-    padding: 8px;
-}
-
-#main-pane {
-    top: 45px;
-    bottom: 0;
-    left: 220px;
-    overflow: auto;
-}
-.container-fluid {
-    padding-top:20px;
-}
-#side-pane {
-    width: 200px;
-    right: auto;
-    overflow: auto;
-    background: #eee;
-    border-right: 1px solid #999;
-    background: #ddd;
-}
-.tags-nav {
-    margin:0;
-}
-.tag {
-    cursor: pointer;
-    float: left;
-    margin: 5px;
-    padding: 2px 7px;
-    font-size: 80%;
-    font-weight: bold;
-    background: #999;
-    color: #fff;
-    border-radius: 4px;
-    -webkit-border-radius: 4px;
-    -moz-border-radius: 4px;
-    -o-border-radius: 4px;
-
-    opacity: 1;
-    transition: opacity 0.3s linear;
-    -moz-transition: opacity 0.3s linear;
-    -webkit-transition: opacity 0.3s linear;
-    -o-transition: opacity 0.3s linear;
-
-    position: relative;
-}
-
 .show-label {
     margin-top: 13px;
 }
@@ -137,7 +50,7 @@ h3 {
     width: 180px;
 }
 
-#new-todo-box {
+/*#new-todo-box {
     margin-top: 10px;
     margin-bottom: 10px;
     margin-left: 60px;
@@ -150,43 +63,35 @@ h3 {
 #new-todo {
    position: absolute;
    width: 100%;
-}
+}*/
 
-#items-view {
-    margin-top: 5px;
-    margin-left: 5px;
-}
+#item-list {
+    padding-left: 0;
 
-#item-list .todo {
-    display: block;
-    height: 50px;
-    position: relative;
-    overflow: hidden;
-    border-top: 1px solid #ccc;
-}
+    .todo {
+        display: block;
+        height: 50px;
+        position: relative;
+        overflow: hidden;
+        border-top: 1px solid #ccc;
 
-#item-list .todo .destroy {
-    cursor: pointer;
-    position: absolute;
-    left: 5px;
-    top: 15px;
-    height: 20px;
-    width: 20px;
-}
-
-#item-list .todo .display, #item-list .todo .edit {
-    margin-left: 30px;
-    height: 100%;
-    width: auto;
-    float: left;
-    padding-top: 18px;
-    line-height: 1;
-}
-
-#todo-input {
-    width: 300px;
-    position: relative;
-    top: -3px;
+        .destroy {
+            cursor: pointer;
+            position: absolute;
+            left: 5px;
+            top: 15px;
+            height: 20px;
+            width: 20px;
+        }
+        .display, .edit {
+            margin-left: 30px;
+            height: 100%;
+            width: auto;
+            float: left;
+            padding-top: 18px;
+            line-height: 1;
+        }
+    }
 }
 
 #item-list .done .todo-text {
@@ -254,3 +159,45 @@ h3 {
     width: 80px;
 }
 
+.td-block {
+    margin-top: 15px;
+}
+.plus {
+    #fa-icon(plus, orange);
+}
+.fa-cubes {
+    #fa-icon(cubes, orange);
+}
+.tags-filter-icon {
+    #fa-icon(tags, grey);
+    font-size: 1.8em;
+    padding-left: 6px;
+    padding-right: 18px;    
+}
+.main-container {
+
+    .nav.nav-pills > li > a {
+        background-color: rgba(231, 231, 228, 1);
+    }
+    .nav-pills > li.active > a, .nav-pills > li.active > a:hover, .nav-pills > li.active > a:focus {
+        color: #ffffff;
+        background-color: #428bca;
+    }    
+}
+.dark {
+    background-color: @gray-darker;
+}
+.todos-header-nav .container-fluid {
+    padding-right: 30px;
+    padding-left: 30px;
+}
+header {
+    background-color: @gray-darker;
+}
+.panel-default > .panel-heading .badge {
+    color: #428bca;
+    background-color: #ffffff;
+}
+.fa-4 {
+    font-size: 2em;
+}

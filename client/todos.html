@@ -1,22 +1,52 @@
 <head>
-  <title>Meteor app</title>
+  <title>LiveTodo</title>
 </head>
 <body>
-  <div class="container-fluid">
-    <div class="row-fluid">
-      <div class="span2">
-        {{> lists}}
-        <div class="stores">
-          {{> stores}}
-        </div>        
+  <header class="navbar navbar-static-top todos-header-nav" id="top" role="banner">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".bs-navbar-collapse">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a href="../" class="navbar-brand">LiveTodo</a>
       </div>
-      
-      <div class="span10">
-        <div class="hero-unit">
-          {{> tag_filter}}
-        </div>
-        <div>
-          {{> todos}}
+      <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
+        <ul class="nav navbar-nav">
+<!--           <li>
+            <a href="http://www.meteor.com">a meteor example app.</a>
+          </li> -->
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="#">Sign in</a></li>
+          <li><a href="#">Sign Up</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  <div class="container" role="alert">
+    <div class="alert alert-warning fade in" role="alert">
+      <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+      <strong>Yo!</strong> This a port of the <a href="https://www.meteor.com/examples/todos" class="fa fa-check-square"> todos meteor.com example</a> to less/bootstrap 3 with some add-ons.
+      <p>More functionality, capabilities and bootstrap/fa awesomeness to be added (... the initial TODOs upon first run or deployment <i class="fa fa-truck fa-4">...</i>)</p>
+      <p><a href="https://www.github.com/xxronis/todos" class="fa fa-github"> Fork it!</a></p>
+    </div>
+  </div>
+  <div class="container-fluid main-container">
+    <div class="row-fluid">
+      <div class="col-md-3 col-sm-4">
+        {{> lists}}      
+      </div>
+      <div class="col-md-9 col-sm-8">
+        <div class="panel panel-default">
+          <div class="panel-heading">{{> tag_filter}}</div>
+          <div class="panel-body">
+            <div  id="todos-container">
+              {{> todos}}
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -24,63 +54,39 @@
 </body>
 
 <template name="lists">
-  <div class="hero-unit pending">
-    <h3>Pending deliveries</h3>
-  </div>
+  <div class="panel panel-default">
+    <div class="panel-heading"><i class="fa fa-cubes"></i> Projects</div>
+    <div class="panel-body">
   {{#if loading}}
-    <div id="lists">Loading...</div>
-  {{else}}
-    <div id="lists">
-      {{#each lists}}
-        <div class="list {{selected}}">
+      <div id="lists">Loading...</div>
+    {{else}}
+      <ul class="nav nav-pills nav-stacked">
+        {{#each lists}}
+        <li class="list {{selected}}">
           {{#if editing}}
-            <div class="edit">
-              <input class="list-name-input" id="list-name-input" type="text" value="{{name}}" />
+            <div class="input-group">
+              <span class="input-group-addon">edit</span>
+              <input type="text" class="form-control" id="list-name-input" pvalue="{{name}}" placeholder="{{name}}">
             </div>
           {{else}}
-            <div class="display">
-              <a class="list-name {{name_class}}" href="/{{_id}}">
-                {{name}}
-              </a>
-            </div>
+            <a href="/{{_id}}" class="list-name {{name_class}} fa fa-cube">
+              <span class="badge pull-right">%todos-count</span>
+              {{name}}
+            </a>
           {{/if}}
+        </li>
+        {{/each}}
+      </ul>
+      <div class="td-block">
+        <div class="input-group">
+          <span class="input-group-addon"><i class="icon fa fa-plus plus"></i></span>
+          <input type="text" class="form-control" id="new-list" placeholder="New project">
         </div>
-      {{/each}}
+      </div>
+      {{/if}}
     </div>
-    <div id="createList">
-      <input type="text" id="new-list" placeholder="New order" />
-    </div>
-  {{/if}}
-</template>
 
-<template name="stores">
-  <div class="hero-unit stores">
-    <h3>Stores</h3>
-  </div>  
-  {{#if loading}}
-    <div id="stores">Loading...</div>
-  {{else}}
-    <div id="stores">
-      {{#each stores}}
-        <div class="list {{selected}}">
-          {{#if editing}}
-            <div class="edit">
-              <input class="store-name-input" id="store-name-input" type="text" value="{{name}}" />
-            </div>
-          {{else}}
-            <div class="display">
-              <a class="store-name {{name_class}}" href="/{{_id}}">
-                {{name}}
-              </a>
-            </div>
-          {{/if}}
-        </div>
-      {{/each}}
-    </div>
-    <div id="createStore">
-      <input type="text" id="new-store" placeholder="New store" />
-    </div>
-  {{/if}}
+  </div>
 </template>
 
 <template name="todos">
@@ -90,9 +96,13 @@
         Loading...
       {{else}}
         <div id="new-todo-box">
-          <input type="text" id="new-todo" placeholder="New item" />
+          <!-- <input type="text" id="new-todo" placeholder="New item" /> -->
+          <div class="input-group">
+            <span class="input-group-addon plus"></span>
+            <input type="text" class="form-control" id="new-todo" placeholder="New item">
+          </div>
         </div>
-        <ul id="item-list">
+        <ul id="item-list" class="td-block">
           {{#each todos}}
             {{> todo_item}}
           {{/each}}
@@ -137,10 +147,10 @@
 
 <template name="tag_filter">
   <ul class="tags-nav nav nav-pills">
-    <span class="label label-warning pull-left show-label">Show:</span>
+    <li class="tags-filter-icon"></li>
     {{#each tags}}
-      <li class="tag {{selected}}">
-        {{tag_text}} <span class="count">({{count}})</span>
+      <li class="{{selected}}">
+        <a href="#" >{{tag_text}}<span class="badge">{{count}}</span></a>
       </li>
     {{/each}}
   </ul>
