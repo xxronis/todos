@@ -89,6 +89,7 @@ Template.lists.lists = function () {
 Template.lists.events({
   'mousedown .list': function (evt) { // select list
     Router.setList(this._id);
+    // Session.set('listname', this._name);
   },
   'click .list': function (evt) {
     // prevent clicks on <a> from refreshing the page.
@@ -130,6 +131,10 @@ Template.lists.selected = function () {
 
 Template.lists.name_class = function () {
   return this.name ? '' : 'empty';
+};
+
+Template.lists.items_count = function () {
+  return Todos.find({list_id:this._id}).count();
 };
 
 Template.lists.editing = function () {
@@ -289,6 +294,13 @@ Template.tag_filter.tag_text = function () {
 Template.tag_filter.selected = function () {
   return Session.equals('tag_filter', this.tag) ? 'active' : '';
 };
+
+// Template.tag_filter.tag_project_name = function () {
+//   // return Session.equals('tag_filter', this.tag) ? 'active' : '';
+//   // var name = Lists.find({list_id: Session.get("list_id")}).name;
+//   console.log(Lists.find({list_id: Session.get("list_id")}))
+//   return Lists.find({list_id: Session.get("list_id")}).name;//Session.get("list_id");
+// };
 
 Template.tag_filter.events({
   'mousedown .tag': function () {
