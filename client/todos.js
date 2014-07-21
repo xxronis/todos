@@ -296,7 +296,11 @@ Template.tag_filter.events({
       Session.set('tag_filter', null);
     else
       Session.set('tag_filter', this.tag);
-  }
+  },
+  'click .tag': function (evt) {
+    // prevent clicks on <a> from refreshing the page.
+    evt.preventDefault();
+  },
 });
 
 ////////// Tracking selected list in URL //////////
