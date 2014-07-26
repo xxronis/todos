@@ -29,4 +29,7 @@ Todos = new Meteor.Collection("todos");
 Meteor.publish('todos', function (list_id) {
   return Todos.find({list_id: list_id});
 });
-
+// Publish todo-counters for every project using publish-counter.
+Meteor.publish('counters', function(list_id) {
+  publishCount(this, 'todos-count-list-' + list_id, Todos.find({list_id:list_id}, { fields: { _id: true }}));
+});

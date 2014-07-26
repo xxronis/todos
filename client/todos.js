@@ -38,6 +38,11 @@ Deps.autorun(function () {
     todosHandle = Meteor.subscribe('todos', list_id);
   else
     todosHandle = null;
+
+  // Subscribe to each Projects todo-counter.
+  Lists.find({}).forEach(function(list) {
+    Meteor.subscribe('counters', list._id);
+  })
 });
 
 
@@ -83,7 +88,11 @@ Template.lists.loading = function () {
 };
 
 Template.lists.lists = function () {
-  return Lists.find({}, {sort: {name: 1}});
+  list_infos = [];
+  Lists.find({}).forEach(function(list) {
+    list_infos.push({_id: list._id, name:list.name, count: Counts.get('todos-count-list-' + list._id)})
+  })
+  return list_infos;
 };
 
 Template.lists.events({
