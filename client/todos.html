@@ -116,7 +116,7 @@
 
 <template name="todo_item">
   <li class="todo {{done_class}}">
-    <form class="form-inline" role="form">
+    <div class="form-inline" role="form">
     {{#if editing}}
 <!--       <div class="edit">
         <input id="todo-input" type="text" value="{{text}}" />
@@ -149,7 +149,7 @@
         </div>
       {{/if}}
     </div>
-    </form>
+    </div>
   </li>
 </template>
 
