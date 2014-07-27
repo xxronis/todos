@@ -108,7 +108,10 @@ Template.lists.events({
     Session.set('editing_listname', this._id);
     Deps.flush(); // force DOM redraw, so we can focus the edit field
     activateInput(tmpl.find("#list-name-input"));
-  }
+  },
+  'click .list-destroy': function (evt) {
+    Lists.remove(this._id);
+  },
 });
 
 // Attach events to keydown, keyup, and blur on "New list" input box.
