@@ -2,8 +2,6 @@
   "packages": {
     "less-bootstrap-3": {},
     "font-awesome-4-less": {},
-    "publish-counts": {},
-    "accounts-ui-bootstrap-3": {},
-    "iron-router": {}
+    "publish-counts": {}
   }
 }
