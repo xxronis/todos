@@ -1,1 +1,0 @@
-A meteor sample application based on the TODOS example http://meteor.com/examples/todos
