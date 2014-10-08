@@ -25,21 +25,19 @@ body {
     padding-left: 2px;
 }
 
-#lists .list {
-    padding: 3px 6px;
+.project-list {
+    .list {
+        &.active {
+            .outstanding {
+                color: #E52626;
+            }            
+        }
+        .outstanding {
+            color: #F8D2A2;
+        }
+    }
 }
 
-#lists .selected {
-    padding: 2px 6px;
-    background: #9be;
-    font-weight: bold;
-}
-
-#lists .list-name {
-    cursor: pointer;
-    color: black;
-    text-decoration: none;
-}
 
 #createList {
     padding: 3px 6px;

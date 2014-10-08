@@ -32,4 +32,5 @@ Meteor.publish('todos', function (list_id) {
 // Publish todo-counters for every project using publish-counter.
 Meteor.publish('counters', function(list_id) {
   publishCount(this, 'todos-count-list-' + list_id, Todos.find({list_id:list_id}, { fields: { _id: true }}));
+  publishCount(this, 'todos-count-active-' + list_id, Todos.find({list_id:list_id, done: false}, { fields: { _id: true }}));
 });

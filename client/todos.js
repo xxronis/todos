@@ -90,7 +90,7 @@ Template.lists.loading = function () {
 Template.lists.lists = function () {
   list_infos = [];
   Lists.find({}).forEach(function(list) {
-    list_infos.push({_id: list._id, name:list.name, count: Counts.get('todos-count-list-' + list._id)})
+    list_infos.push({_id: list._id, name:list.name, count: Counts.get('todos-count-list-' + list._id), active: Counts.get('todos-count-active-' + list._id)})
   })
   return list_infos;
 };

@@ -57,9 +57,9 @@
     <div class="panel-heading"><i class="fa fa-cubes"></i> Projects</div>
     <div class="panel-body">
   {{#if loading}}
-      <div id="lists">Loading...</div>
+      <div id="lists-loading">Loading...</div>
     {{else}}
-      <ul class="nav nav-pills nav-stacked">
+      <ul class="nav nav-pills nav-stacked project-list">
         {{#each lists}}
         <li class="list {{selected}}">
           {{#if editing}}
@@ -69,7 +69,7 @@
             </div>
           {{else}}
             <a href="/{{_id}}" class="list-name {{name_class}} fa fa-cube">
-              <span class="badge pull-right">{{count}} todos</span>
+              <span class="badge pull-right"><span class="outstanding">{{active}}</span> / {{count}} todos</span>
               {{name}}
               <button class="list-destroy btn btn-danger"><i class="fa fa-trash-o destroy"></i></button>
             </a>
