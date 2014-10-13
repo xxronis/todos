@@ -222,7 +222,9 @@ Template.todo_item.events({
   'click .check': function () {
     Todos.update(this._id, {$set: {done: !this.done}});
   },
-
+  'click .name': function () {
+    Session.set('tag_filter', this.tag);
+  },
   'click .destroy': function () {
     Todos.remove(this._id);
   },

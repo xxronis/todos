@@ -107,7 +107,17 @@ body {
 #item-list .todo .item-tags .removable_tag {
     padding-right: 22px;
 }
-
+.removable_tag {
+    .name{
+        cursor: pointer;
+        &:hover {
+            color: #dedede;
+        }
+    }
+    .remove {
+        cursor: pointer;
+    }
+}
 #item-list .todo .item-tags .tag .remove {
     position: absolute;
     top: 0;
