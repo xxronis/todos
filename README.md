@@ -7,7 +7,7 @@ Deployed on [livetodo.meteor.com](http://livetodo.meteor.com)
 
 ### Enchancements
 
-- less bootstrap3 [the right way](www.manuel-schoebel.com/blog/meteorjs-and-twitter-bootstrap---the-right-way)
+- less bootstrap 3
 - Usabiltity and real world functionality
 - [Font awesomeness](http://fontawesome.io/)
 - User auth and rules of engagement
@@ -15,4 +15,4 @@ Deployed on [livetodo.meteor.com](http://livetodo.meteor.com)
 
 ### The dream:
 
-Deploy web and native apps with one codebase for all devices with meteor/phonegap
+Deploy web and native apps with one codebase for all devices with meteor cordova support.
