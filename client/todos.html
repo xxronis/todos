@@ -57,7 +57,7 @@
     <div class="panel-heading"><i class="fa fa-cubes"></i> Projects</div>
     <div class="panel-body">
   {{#if loading}}
-      <div id="lists-loading">Loading...</div>
+      <div id="lists-loading"><i class="fa fa-spinner fa-spin"></i></div>
     {{else}}
       <ul class="nav nav-pills nav-stacked project-list">
         {{#each lists}}
@@ -94,7 +94,7 @@
   {{#if any_list_selected}}
     <div id="items-view">
       {{#if loading}}
-        Loading...
+        <i class="fa fa-spinner fa-spin fa-2x"></i>
       {{else}}
         <div id="new-todo-box">
           <!-- <input type="text" id="new-todo" placeholder="New item" /> -->
