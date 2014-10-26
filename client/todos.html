@@ -3,7 +3,7 @@
 </head>
 <body>
   <header class="navbar navbar-static-top todos-header-nav" id="top" role="banner">
-    <div class="container-fluid">
+    <div class="container-fluid container">
       <div class="navbar-header">
         <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".bs-navbar-collapse">
           <span class="sr-only">Toggle navigation</span>
@@ -25,20 +25,20 @@
       </nav>
     </div>
   </header>
-  <div class="container" role="alert">
-    <div class="alert alert-warning fade in" role="alert">
-      <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
-      <strong>Yo!</strong> This a port of the <a href="https://www.meteor.com/examples/todos" class="fa fa-check-square"> todos meteor.com example</a> to less/bootstrap 3 with some add-ons.
-      <p>More functionality, capabilities and bootstrap/fa awesomeness to be added (... the initial TODOs upon first run or deployment <i class="fa fa-truck fa-4">...</i>)</p>
-      <p><a href="https://www.github.com/xxronis/todos" class="fa fa-github"> Fork it!</a></p>
-    </div>
-  </div>
-  <div class="container-fluid main-container">
+
+  <div class="container-fluid main-container container">
     <div class="row-fluid">
       <div class="col-md-3 col-sm-4">
         {{> lists}}      
       </div>
       <div class="col-md-9 col-sm-8">
+        <div class="" role="alert">
+          <div class="alert alert-success fade in" role="alert">
+            <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+            <strong>Yo!</strong> This is a meteor.js playground, using <a href="https://www.meteor.com/examples/todos" class="fa fa-check-square"> todos meteor.com example</a> and enchance it with proper UX and real world functionality <i class="fa fa-truck fa-4">...</i>
+            <p><a href="https://www.github.com/xxronis/todos" class="fa fa-github"> Fork it!</a></p>
+          </div>
+        </div>
         <div class="panel panel-default">
           <div class="panel-heading">{{> tag_filter}}</div>
           <div class="panel-body">
