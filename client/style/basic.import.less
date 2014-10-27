@@ -31,7 +31,17 @@ body {
         &.active {
             .outstanding {
                 color: #E52626;
-            }            
+            }
+            .list-destroy {
+                background-color: @brand-danger;
+                color: #fff;
+                &:hover {
+                    background-color: red;
+                }
+            }
+        }
+        .badge{
+
         }
         .outstanding {
             color: #F8D2A2;
@@ -149,9 +159,23 @@ body {
     padding-right: 18px;    
 }
 
-.panel-default > .panel-heading .badge {
-    color: #428bca;
-    background-color: #ffffff;
+.panel-default {
+    & > .panel-heading  {
+        .badge {
+            color: #428bca;
+            background-color: #ffffff;
+        }
+        .collapses {
+            display: block;
+        }
+/*        &.side-list {
+            font-size: 20px;
+            background-color: #eee;
+            .panel-heading  a{
+                font-size: 20px;
+            }
+        }*/
+    }
 }
 .fa-4 {
     font-size: 2em;
@@ -159,10 +183,18 @@ body {
 .list-destroy {
     display: none;
     background-color: @brand-danger;
+    font-size: 14px;
     &:hover {
         background-color: red;
     }
 }
 .list:hover .list-destroy{
     display: block;
+}
+
+.navbar {
+    .container {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
 }
