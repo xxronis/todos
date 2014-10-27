@@ -53,40 +53,46 @@
 </body>
 
 <template name="lists">
-  <div class="panel panel-default">
-    <div class="panel-heading"><i class="fa fa-cubes"></i> Projects</div>
-    <div class="panel-body">
-  {{#if loading}}
-      <div id="lists-loading"><i class="fa fa-spinner fa-spin"></i></div>
-    {{else}}
-      <ul class="nav nav-pills nav-stacked project-list">
-        {{#each lists}}
-        <li class="list {{selected}}">
-          {{#if editing}}
-            <div class="input-group">
-              <span class="input-group-addon">edit</span>
-              <input type="text" class="form-control" id="list-name-input" pvalue="{{name}}" placeholder="{{name}}">
-            </div>
-          {{else}}
-            <a href="/{{_id}}" class="list-name {{name_class}} fa fa-cube">
-              <span class="badge pull-right"><span class="outstanding">{{active}}</span> / {{count}} todos</span>
-              {{name}}
-              <button class="list-destroy btn btn-danger"><i class="fa fa-trash-o destroy"></i></button>
-            </a>
-
-          {{/if}}
-        </li>
-        {{/each}}
-      </ul>
-      <div class="td-block">
-        <div class="input-group">
-          <span class="input-group-addon"><i class="icon fa fa-plus plus"></i></span>
-          <input type="text" class="form-control" id="new-list" placeholder="New project">
-        </div>
-      </div>
-      {{/if}}
+  <div class="panel panel-default side-list">
+    <div class="panel-heading">
+      <a data-toggle="collapse" class="collapses" href="#projects">
+        <i class="fa fa-cubes"></i> Projects
+      </a>
     </div>
+    <div id="projects" class="panel-collapse collapse in">
+      <div class="panel-body">
+    {{#if loading}}
+        <div id="lists-loading"><i class="fa fa-spinner fa-spin"></i></div>
+      {{else}}
+        <ul class="nav nav-pills nav-stacked project-list">
+          {{#each lists}}
+          <li class="list {{selected}}">
+            {{#if editing}}
+              <div class="input-group">
+                <span class="input-group-addon">edit</span>
+                <input type="text" class="form-control" id="list-name-input" pvalue="{{name}}" placeholder="{{name}}">
+              </div>
+            {{else}}
+              <a href="/{{_id}}" class="list-name {{name_class}} fa fa-cube">
+                <span class="list-destroy badge pull-right"><i class="fa fa-trash-o destroy"></i></span>
+                <span class="badge pull-right"><span class="outstanding">{{active}}</span> / {{count}}</span>
+                {{name}}
+                
+              </a>
 
+            {{/if}}
+          </li>
+          {{/each}}
+        </ul>
+        <div class="td-block">
+          <div class="input-group">
+            <span class="input-group-addon"><i class="icon fa fa-plus plus"></i></span>
+            <input type="text" class="form-control" id="new-list" placeholder="New project">
+          </div>
+        </div>
+        {{/if}}
+      </div>
+    </div>
   </div>
 </template>
 
@@ -103,7 +109,7 @@
             <input type="text" class="form-control" id="new-todo" placeholder="New item">
           </div>
         </div>
-        <ul id="item-list" class="td-block">
+        <ul id="tags-list" class="td-block item-list">
           {{#each todos}}
             {{> todo_item}}
           {{/each}}
@@ -125,7 +131,7 @@
         <input type="text" id="todo-input" class="form-control" placeholder="{{text}}" value="{{text}}">
       </div>      
     {{else}}
-      <div class="destroy"></div>
+      <span class="list-destroy badge pull-left"><i class="fa fa-trash-o destroy"></i></span>
 
       <div class="form-group display">
         <input name="markdone" type="checkbox" {{done_checkbox}} class="check"><span class="todo-text">{{text}}</span>

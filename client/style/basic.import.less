@@ -2,10 +2,10 @@ body {
     background: #F2F3EE;
     background-color: #112744;
     background-image: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/PjxzdmcgeG1sbnM9Imh0d…0iMSIgaGVpZ2h0PSIxIiBmaWxsPSJ1cmwoI2xlc3NoYXQtZ2VuZXJhdGVkKSIgLz48L3N2Zz4=);
-    background-image: -webkit-linear-gradient(top, #112744, #DDD6BA 114%);
-    background-image: -moz-linear-gradient(top, #112744, #DDD6BA 114%);
-    background-image: -o-linear-gradient(top, #112744, #DDD6BA 114%);
-    background-image: linear-gradient(to bottom, #112744, #DDD6BA 114%);
+    background-image: -webkit-linear-gradient(top, #112744, #0B81AB 114%);
+    background-image: -moz-linear-gradient(top, #112744, #0B81AB 114%);
+    background-image: -o-linear-gradient(top, #112744, #0B81AB 114%);
+    background-image: linear-gradient(to bottom, #112744, #0B81AB 114%);
     background-repeat: no-repeat;
     background-attachment: fixed;
 }
@@ -18,15 +18,6 @@ body {
     border: 1px solid #777;
 }
 
-.tags-nav .selected {
-    background: rgb(29, 126, 255);
-}
-.tags-nav .tag:hover {
-    background: rgb(29, 126, 200);
-}
-.tags-nav .tag.selected:hover {
-    background: rgb(29, 126, 255);
-}
 #tag-filter .count {
     font-weight: normal;
     padding-left: 2px;
@@ -34,6 +25,9 @@ body {
 
 .project-list {
     .list {
+        & > a {
+            padding: 16px 12px;
+        }
         &.active {
             .outstanding {
                 color: #E52626;
@@ -44,20 +38,29 @@ body {
         }
     }
 }
-
-
-#createList {
-    padding: 3px 6px;
-    margin-top: 5px;
+/* CSS Method for adding Font Awesome Chevron Icons */
+.collapses:after {
+  /* symbol for "opening" panels */
+  font-family:'FontAwesome';
+  content:"\f077";
+  float: right;
+  color: inherit;
+  font-style: normal;
+}
+.collapses.collapsed:after {
+  /* symbol for "collapsed" panels */
+  content:"\f078";
 }
 
-#createList input {
-    width: 180px;
+.input-group {
+    margin: 12px;
 }
 
-#item-list {
+/*Main List*/
+.item-list {
     padding-left: 0;
-
+    margin-bottom: 0;
+    margin-top: 0;
     .todo {
         display: block;
         padding: 14px 0 14px 30px;
@@ -65,88 +68,65 @@ body {
         overflow: hidden;
         border-top: 1px solid #ccc;
         background-color: rgba(221, 221, 221, 0.28);
+        &.done {
+            .todo-text {
+                text-decoration: line-through;
+            }
+        }
         &:hover {
             background-color: rgba(180, 194, 167, 0.34);
+            .list-destroy {
+                display: block;
+                position: absolute;
+                left: 5px;
+                top: 15px;
+                cursor: pointer;
+            }
         }
-
-        .destroy {
-            cursor: pointer;
-            position: absolute;
-            left: 5px;
-            top: 15px;
-            height: 20px;
-            width: 20px;
+        .item-tags {
+            overflow: auto;
+            float: right;
+            margin-right: 8px;
+            .tag {
+                position: relative;
+                &.addtag {
+                    background-color: #27A80E;
+                    opacity: .6;
+                    &:hover {
+                        opacity: 1;
+                        cursor: pointer;
+                    }
+                }
+                .remove {
+                    position: absolute;
+                    top: 0;
+                    right: 4px;
+                    bottom: 0;
+                    width: 16px;
+                    background: url("/close_16.png") no-repeat 0 center;
+                }
+            }
+            .removable_tag {
+                padding-right: 22px;
+                .name{
+                    cursor: pointer;
+                    &:hover {
+                        color: #dedede;
+                    }
+                }
+                .remove {
+                    cursor: pointer;
+                    &:hover {
+                        background-position: -16px center;
+                    }
+                }
+            }            
         }
-/*        .display, .edit {
-            margin-left: 30px;
-        }*/
-    }
-}
-#item-list {
-    margin-bottom: 0;
-}
-#item-list .done .todo-text {
-    text-decoration: line-through;
-    color: #999;
-}
-
-#item-list .todo:hover .destroy {
-    background: url('/destroy.png') no-repeat 0 0;
-}
-
-#item-list .todo .destroy:hover {
-    background-position: 0 -20px;
-}
-
-#item-list .todo .item-tags {
-    overflow: auto;
-    float: right;
-    margin-right: 8px;
-}
-
-#item-list .todo .item-tags .tag {
-    /*margin-top: 15px;*/
-    position: relative;
-}
-#item-list .todo .item-tags .tag.addtag {
-    background-color: #27A80E;
-    opacity: .6;
-}
-#item-list .todo .item-tags .tag.addtag:hover {
-    opacity: 1;
-    cursor: pointer;
-}
-
-#item-list .todo .item-tags .removable_tag {
-    padding-right: 22px;
-}
-.removable_tag {
-    .name{
-        cursor: pointer;
-        &:hover {
-            color: #dedede;
+        .check {
+            float: left;
+            width: 25px;
         }
     }
-    .remove {
-        cursor: pointer;
-    }
-}
-#item-list .todo .item-tags .tag .remove {
-    position: absolute;
-    top: 0;
-    right: 4px;
-    bottom: 0;
-    width: 16px;
-    background: url("/close_16.png") no-repeat 0 center;
-}
-
-#item-list .todo .item-tags .tag .remove:hover {
-    background-position: -16px center;
-}
-
-#item-list .todo .check {
-    float: left;
-    width: 25px;
 }
 
 #edittag-input {
@@ -168,26 +148,7 @@ body {
     padding-left: 6px;
     padding-right: 18px;    
 }
-.main-container {
 
-    .nav.nav-pills > li > a {
-        background-color: rgba(231, 231, 228, 1);
-    }
-    .nav-pills > li.active > a, .nav-pills > li.active > a:hover, .nav-pills > li.active > a:focus {
-        color: #ffffff;
-        background-color: #428bca;
-    }    
-}
-.dark {
-    background-color: @gray-darker;
-}
-.todos-header-nav .container-fluid {
-    padding-right: 30px;
-    padding-left: 30px;
-}
-header {
-    /*background-color: @gray-darker;*/
-}
 .panel-default > .panel-heading .badge {
     color: #428bca;
     background-color: #ffffff;
@@ -197,9 +158,10 @@ header {
 }
 .list-destroy {
     display: none;
-    position: absolute;
-    right: -39px;
-    top: 0;
+    background-color: @brand-danger;
+    &:hover {
+        background-color: red;
+    }
 }
 .list:hover .list-destroy{
     display: block;
