@@ -9,6 +9,11 @@ body {
     background-repeat: no-repeat;
     background-attachment: fixed;
 }
+a {
+    &:hover {
+        text-decoration: none;
+    }
+}
 .show-label {
     margin-top: 13px;
 }
@@ -76,15 +81,15 @@ body {
         padding: 14px 0 14px 30px;
         position: relative;
         overflow: hidden;
-        border-top: 1px solid #ccc;
-        background-color: rgba(221, 221, 221, 0.28);
+        border-top: 1px solid rgba(91, 192, 222, 0.47);
+        background-color: rgba(221, 221, 221, 0.20);
         &.done {
             .todo-text {
                 text-decoration: line-through;
             }
         }
         &:hover {
-            background-color: rgba(180, 194, 167, 0.34);
+            background-color: rgba(91, 192, 222, 0.43);
             .list-destroy {
                 display: block;
                 position: absolute;
@@ -147,19 +152,24 @@ body {
     margin-top: 15px;
 }
 .plus {
-    #fa-icon(plus, orange);
+    #fa-icon(plus, @brand-info);
 }
 .fa-cubes {
-    #fa-icon(cubes, orange);
+    #fa-icon(cubes, @brand-info);
+    font-size: 20px;
+}
+.fa-cube {
+    #fa-icon(cube, @brand-info);
 }
 .tags-filter-icon {
-    #fa-icon(tags, grey);
+    #fa-icon(tags, @brand-info);
     font-size: 1.8em;
     padding-left: 6px;
     padding-right: 18px;    
 }
 
 .panel-default {
+    border: 0;
     & > .panel-heading  {
         .badge {
             color: #428bca;
@@ -167,6 +177,7 @@ body {
         }
         .collapses {
             display: block;
+            font-size: 1.23em;
         }
 /*        &.side-list {
             font-size: 20px;
@@ -175,6 +186,11 @@ body {
                 font-size: 20px;
             }
         }*/
+    }
+    &.main-list {
+        .panel-body {
+            /*background-color: #fddddd;*/
+        }
     }
 }
 .fa-4 {
