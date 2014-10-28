@@ -218,6 +218,10 @@ Template.todo_item.adding_tag = function () {
   return Session.equals('editing_addtag', this._id);
 };
 
+Template.todo_item.todo_collapse_id = function () {
+  return this._id;
+};
+
 Template.todo_item.events({
   'click .check': function () {
     Todos.update(this._id, {$set: {done: !this.done}});

@@ -124,42 +124,47 @@
 </template>
 
 <template name="todo_item">
-  <li class="todo {{done_class}}">
-    <div class="form-inline" role="form">
-    {{#if editing}}
-<!--       <div class="edit">
-        <input id="todo-input" type="text" value="{{text}}" />
-      </div> -->
-      <div class="form-group edit">
-        <!-- <label class="sr-only" for="exampleInputEmail2">Email address</label> -->
-        <input type="text" id="todo-input" class="form-control" placeholder="{{text}}" value="{{text}}">
-      </div>      
-    {{else}}
-      <span class="list-destroy badge pull-left"><i class="fa fa-trash-o destroy"></i></span>
+  <div class="panel panel-default todo {{done_class}}">
+    <a data-toggle="collapse" class="" href="#todo-{{todo_collapse_id}}">
+      <div class="panel-heading">
+        <div class="form-inline" role="form">
+        {{#if editing}}
+          <div class="form-group edit">
+            <input type="text" id="todo-input" class="form-control" placeholder="{{text}}" value="{{text}}">
+          </div>      
+        {{else}}
+          <span class="list-destroy badge pull-left"><i class="fa fa-trash-o destroy"></i></span>
 
-      <div class="form-group display">
-        <input name="markdone" type="checkbox" {{done_checkbox}} class="check"><span class="todo-text">{{text}}</span>
+          <div class="form-group display">
+            <input name="markdone" type="checkbox" {{done_checkbox}} class="check"><span class="todo-text">{{text}}</span>
+          </div>
+        {{/if}}
+        <div class="item-tags form-group">
+          {{#each tag_objs}}
+            <div class="tag removable_tag badge">
+              <div class="name">{{tag}}</div>
+              <div class="remove"></div>
+            </div>
+          {{/each}}
+          {{#if adding_tag}}
+            <div class="tag edittag badge form-group">
+              <input type="text" id="edittag-input" class="form-control" value="{{tag}}" />
+            </div>
+          {{else}}
+            <div class="tag addtag badge">
+              <span class="addicon fa fa-plus"> tag</span>
+            </div>
+          {{/if}}
+        </div>
+        </div>
       </div>
-    {{/if}}
-    <div class="item-tags form-group">
-      {{#each tag_objs}}
-        <div class="tag removable_tag badge">
-          <div class="name">{{tag}}</div>
-          <div class="remove"></div>
-        </div>
-      {{/each}}
-      {{#if adding_tag}}
-        <div class="tag edittag badge form-group">
-          <input type="text" id="edittag-input" class="form-control" value="{{tag}}" />
-        </div>
-      {{else}}
-        <div class="tag addtag badge">
-          <span class="addicon fa fa-plus"> tag</span>
-        </div>
-      {{/if}}
+    </a>
+    <div id="todo-{{todo_collapse_id}}" class="panel-collapse collapse">
+      <div class="panel-body">
+          Edit todo, assign, priority, add Subtasks attachments ...
+      </div>
     </div>
-    </div>
-  </li>
+  </div>
 </template>
 
 <template name="tag_filter">
