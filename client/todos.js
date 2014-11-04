@@ -24,9 +24,9 @@ Session.setDefault('editing_itemname', null);
 // Select a list once data has arrived.
 var listsHandle = Meteor.subscribe('lists', function () {
   if (!Session.get('list_id')) {
-    var list = Lists.findOne({}, {sort: {name: 1}});
-    if (list)
-      Router.setList(list._id);
+    // var list = Lists.findOne({}, {sort: {name: 1}});
+    // if (list)
+    //   Router.setList(list._id);
   }
 });
 
@@ -313,6 +313,10 @@ Template.tag_filter.selected = function () {
   return Session.equals('tag_filter', this.tag) ? 'active' : '';
 };
 
+
+Template.Home.text = function () {
+  return "Fuch yeah";
+};
 // Template.tag_filter.tag_project_name = function () {
 //   // return Session.equals('tag_filter', this.tag) ? 'active' : '';
 //   // var name = Lists.find({list_id: Session.get("list_id")}).name;
@@ -355,4 +359,9 @@ Router = new TodosRouter;
 
 Meteor.startup(function () {
   Backbone.history.start({pushState: true});
+});
+Router.route('/', function () {
+  this.render('Home', {
+    data: function () { return Items.findOne({_id: this.params._id}) }
+  });
 });
