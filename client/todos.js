@@ -308,7 +308,7 @@ Template.tag_filter.helpers({
 
 
 Template.Home.helpers({
-  text = function () {
+  text: function () {
     return "Fuch yeah";
   }  
 })
